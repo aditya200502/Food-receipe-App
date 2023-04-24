@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import styled from "styled-components"
 import "@splidejs/splide/dist/css/splide.min.css"
+import { Link } from "react-router-dom";
 
 function Trending() {
 
-    const API = '7aafed5feafc4c97a8c2824507496040';
+    const API = 'e9fa0f4495c54432882203bf2b39daa1';
 
     const [Popular, setPopular] = useState([]);
 
@@ -46,7 +47,7 @@ function Trending() {
                 <h3>Trending</h3>
 
                 <Splide options={{
-                    perPage: 3,
+                    perPage: 4,
                     arrows: true,
                     pagination: false,
                     drag: "free",
@@ -57,9 +58,13 @@ function Trending() {
                         return (
                             <SplideSlide key={recipe.id}>
                                 <Card>
+                                    <Link to={"/recipe/" + recipe.id}>
+
                                     <p>{recipe.title}</p>
                                     <img src={recipe.image} alt={recipe.title} />
                                     <Gradient />
+
+                                    </Link>
                                 </Card>
                             </SplideSlide>
                         )
